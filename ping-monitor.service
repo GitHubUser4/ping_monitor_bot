@@ -5,9 +5,9 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/root/bots/ping-monitor
+WorkingDirectory=/root/bots/ping_monitor_bot
 # Запуск строго через интерпретатор виртуального окружения
-ExecStart=/root/bot/ping-monitor/venv/bin/python ping_monitor.py
+ExecStart=/root/bots/ping_monitor_bot/venv/bin/python ping_monitor.py
 # Если скрипт упадет по непредвиденной ошибке — systemd его поднимет через 10 сек
 Restart=always
 RestartSec=10
