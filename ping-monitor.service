@@ -1,0 +1,19 @@
+[Unit]
+Description=Ping Monitor Daemon with Telegram Notifications
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/ping-monitor
+# Запуск строго через интерпретатор виртуального окружения
+ExecStart=/opt/ping-monitor/venv/bin/python ping_monitor.py
+# Если скрипт упадет по непредвиденной ошибке — systemd его поднимет через 10 сек
+Restart=always
+RestartSec=10
+# Перенаправляем логи в journald
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
